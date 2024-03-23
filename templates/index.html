@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast Prediction</title>
+    <style>
+        /* CSS for center alignment and decoration */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Align the content to the center */
+            background-color: #f2f2f2; /* Set background color */
+            padding-top: 50px; /* Add some space at the top */
+        }
+        
+        h1 {
+            color: #333; /* Set text color */
+        }
+
+        form {
+            margin: 0 auto; /* Center the form horizontally */
+            max-width: 400px; /* Set maximum width for the form */
+            padding: 20px; /* Add some padding around the form */
+            background-color: #fff; /* Set background color for the form */
+            border-radius: 8px; /* Add border radius to form */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+        }
+
+        label {
+            display: block; /* Display labels as blocks */
+            text-align: left; /* Align label text to the left */
+            margin-bottom: 10px; /* Add some space below each label */
+            color: #666; /* Set label text color */
+        }
+
+        input[type="number"] {
+            width: 100%; /* Set input width to 100% */
+            padding: 8px; /* Add padding to input */
+            margin-bottom: 20px; /* Add some space below each input */
+            border: 1px solid #ccc; /* Add border to input */
+            border-radius: 4px; /* Add border radius to input */
+        }
+
+        input[type="submit"] {
+            width: 100%; /* Set button width to 100% */
+            padding: 10px; /* Add padding to button */
+            background-color: #4caf50; /* Set button background color */
+            color: #fff; /* Set button text color */
+            border: none; /* Remove button border */
+            border-radius: 4px; /* Add border radius to button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Change button background color on hover */
+        }
+
+        h2 {
+            margin-top: 30px; /* Add some space above the prediction */
+        }
+
+        p {
+            color: #333; /* Set text color for prediction */
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Forecast Prediction App</h1>
+    <form action="/predict" method="post">
+        <label for="temp_C">Temperature (°C):</label>
+        <input type="number" id="temp_C" name="temp_C" required><br>
+        
+        <label for="dew_point_temp_C">Dew Point Temperature (°C):</label>
+        <input type="number" id="dew_point_temp_C" name="dew_point_temp_C" required><br>
+
+        <label for="rel_hum">Relative Humidity (%):</label>
+        <input type="number" id="rel_hum" name="rel_hum" required><br><br>
+
+        <label for="wind_speed_km_h">Wind Speed (km/h):</label>
+        <input type="number" id="wind_speed_km_h" name="wind_speed_km_h" required><br>
+
+        <label for="visibility_km">Visibility (km):</label>
+        <input type="number" id="visibility_km" name="visibility_km" required><br>
+
+        <label for="press_kPa">Pressure (kPa):</label>
+        <input type="number" id="press_kPa" name="press_kPa" required><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+    <h2>Prediction:</h2>
+    <p>The predicted temperature is: {{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
